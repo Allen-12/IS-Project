@@ -50,6 +50,11 @@
 </template>
 
 <script>
+import Localbase from 'localbase'
+import {v4 as uuidv4} from 'uuid';
+
+let db = new Localbase('tank_db')
+
 export default {
     name: "InitialSetup",
     data: () => ({
@@ -91,13 +96,15 @@ export default {
       {
           let setupData =
           {
+              id: uuidv4(),
               volume: Number(this.volume),
               diameter: Number(this.diameter),
               height: Number(this.height),
               surfaceArea: this.volume / this.height
           }
           console.log(setupData)
-          
+          let data = db.collection('tank_data').add(setupData)
+          console.log(data);
           this.$router.push({name: 'Home'})
       }
     },
