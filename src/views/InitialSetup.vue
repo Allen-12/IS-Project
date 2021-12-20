@@ -1,112 +1,31 @@
 <template>
-    <v-form
-    ref="form.v"
-    v-model="valid"
-    lazy-validation
-  >
-    <v-text-field
-      v-model="volume"
-      :counter="20"
-      :rules="volumeRules"
-      label="Volume (L)"
-      required
-      clearable
-    ></v-text-field>
-
-    <v-text-field
-      v-model="height"
-      :counter="20"
-      :rules="heightRules"
-      label="Height (cm)"
-      required
-      clearable
-    ></v-text-field>
-
-    <v-text-field
-      v-model="diameter"
-      :counter="20"
-      :rules="diameterRules"
-      label="Diameter (cm)"
-      required
-      clearable
-    ></v-text-field>
-
-    <v-btn
-      color="success"
-      class="mr-4"
-      @click="saveSetupData"
-    >
-      Complete Setup
-    </v-btn>
-
-    <v-btn
-      color="error"
-      class="mr-4"
-      @click="reset"
-    >
-      Reset
-    </v-btn>
-  </v-form>
+    <SetupSummary v-if="added"></SetupSummary>
+    <InitialForm v-else></InitialForm>
 </template>
 
 <script>
 import Localbase from 'localbase'
-import {v4 as uuidv4} from 'uuid';
+import InitialForm from "../components/InitialForm.vue"
+import SetupSummary from "../components/SetupSummary.vue"
 
 let db = new Localbase('tank_db')
 
 export default {
     name: "InitialSetup",
-    data: () => ({
-      valid: true,
-      volume: '',
-      volumeRules: [
-        v => !!v || 'Volume is required',
-        v => (v && Number.isInteger(Number(v))) || 'Volume must be a number',
-        v => (v && v > 0) || 'Volume must be greater than 0',
-      ],
-      height: '',
-      heightRules: [
-        v => !!v || 'Height is required',
-        v => (v && Number.isInteger(Number(v))) || 'Height must be a number',
-        v => (v && v > 0) || 'Height must be greater than 0',
-      ],
-      diameter: '',
-      diameterRules: [
-        v => !!v || 'Diameter is required',
-        v => (v && Number.isInteger(Number(v))) || 'Diameter must be a number',
-        v => (v && v > 0) || 'Diameter must be greater than 0',
-      ],
-    }),
-
-    methods: {
-      validate () 
-      {
-        this.$refs.form.validate()
-      },
-      reset ()
-      {
-        this.$refs.form.reset()
-      },
-      resetValidation ()
-      {
-        this.$refs.form.resetValidation()
-      },
-      saveSetupData()
-      {
-          let setupData =
-          {
-              id: uuidv4(),
-              volume: Number(this.volume),
-              diameter: Number(this.diameter),
-              height: Number(this.height),
-              surfaceArea: this.volume / this.height
-          }
-          console.log(setupData)
-          let data = db.collection('tank_data').add(setupData)
-          console.log(data);
-          this.$router.push({name: 'Home'})
-      }
+    
+    components:
+    {
+      InitialForm,
+      SetupSummary
     },
+
+    data: () => ({
+      added: false,
+    }),
+    created(){
+      db.collection('tank_data').get().then(tank_data => {
+        this.added = !!tank_data.length
+      })
+    }
 }
 </script>
