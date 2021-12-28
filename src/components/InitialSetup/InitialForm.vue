@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import CylindricalForm from '../components/CylindricalForm.vue'
-import RectangularForm from '../components/RectangularForm.vue'
+import CylindricalForm from '../Cylindrical/CylindricalForm.vue'
+import RectangularForm from '../Rectangular/RectangularForm.vue'
 
 export default {
     name: "InitialForm",

@@ -5,8 +5,8 @@
 
 <script>
 import Localbase from 'localbase'
-import InitialForm from "../components/InitialForm.vue"
-import SetupSummary from "../components/SetupSummary.vue"
+import InitialForm from "../components/InitialSetup/InitialForm.vue"
+import SetupSummary from "../components/InitialSetup/SetupSummary.vue"
 
 let db = new Localbase('tank_db')
 
@@ -18,7 +18,6 @@ export default {
       InitialForm,
       SetupSummary
     },
-
     data: () => ({
       added: false,
     }),
