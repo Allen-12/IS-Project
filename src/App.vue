@@ -30,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item 
-              :to="'/setup'"
+              :to="{ name: 'Initial Setup' }"
               link>
           <v-list-item-icon>
             <v-icon>mdi-cogs</v-icon>
@@ -41,7 +41,9 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item 
+        :to="{ name: 'Visualisations' }"
+        link>
           <v-list-item-icon>
             <v-icon>mdi-chart-areaspline</v-icon>
           </v-list-item-icon>
