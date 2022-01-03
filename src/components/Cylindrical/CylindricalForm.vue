@@ -62,19 +62,19 @@ export default {
       volume: '',
       volumeRules: [
         v => !!v || 'Volume is required',
-        v => (v && Number.isInteger(Number(v))) || 'Volume must be a number',
+        v => (v && !isNaN(Number(v))) || 'Volume must be a number',
         v => (v && v > 0) || 'Volume must be greater than 0',
       ],
       height: '',
       heightRules: [
         v => !!v || 'Height is required',
-        v => (v && Number.isInteger(Number(v))) || 'Height must be a number',
+        v => (v && !isNaN(Number(v))) || 'Height must be a number',
         v => (v && v > 0) || 'Height must be greater than 0',
       ],
       diameter: '',
       diameterRules: [
         v => !!v || 'Diameter is required',
-        v => (v && Number.isInteger(Number(v))) || 'Diameter must be a number',
+        v => (v && !isNaN(Number(v))) || 'Diameter must be a number',
         v => (v && v > 0) || 'Diameter must be greater than 0',
       ],
     }),
@@ -100,13 +100,13 @@ export default {
               volume: Number(this.volume),
               diameter: Number(this.diameter),
               height: Number(this.height),
-              surfaceArea: this.volume / this.height,
+              surfaceArea: (this.volume * 1000) / this.height,
               tank_type: 'cylindrical'
           }
-          console.log(setupData)
+          // console.log(setupData)
           db.collection('tank_data').add(setupData).then(response => {
             this.added = response.success
-            console.log(this.added);
+            // console.log(this.added);
           })
           this.$router.push({name: 'Home'})
       },
