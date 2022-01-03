@@ -72,19 +72,18 @@ export default {
     db.collection('tank_data').get().then(tank_data => {
       this.height = tank_data[0].height
       this.surfaceArea = tank_data[0].surfaceArea
-      // console.log(this.surfaceArea);
     })
   },
   mounted: function(){
     this.getAllAPIData()
     setInterval(this.getMostRecentAPIData,30000)
-    
   },
   methods: {
     // Get all API Data at when page is loaded
     async getAllAPIData(){
       try
       {
+        console.log('Making API Call');
         const response = await axios.get('https://api.thingspeak.com/channels/1575729/feeds.json?api_key=XGIU5VOHC9Y03Q9O')
         this.responseData = response.data.feeds
 
@@ -106,11 +105,10 @@ export default {
           this.responseData.push(response.data.feeds[0])
           this.setTankData(this.responseData)
         }
-        console.log(this.responseData.length);
       }
       catch (error)
       {
-        console.log(error);
+        console.error(error);
       }
     },
     setTankData(data)
@@ -123,7 +121,6 @@ export default {
       this.timeLeft = this.availableVolume/this.flowRate
       let today = moment()
       this.time = today.add(this.timeLeft, 'm')._d
-      // console.log(data);
     }
   }
 }

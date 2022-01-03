@@ -106,9 +106,8 @@ export default {
           // console.log(setupData)
           db.collection('tank_data').add(setupData).then(response => {
             this.added = response.success
-            // console.log(this.added);
+            this.$router.push({name: 'Home'})
           })
-          this.$router.push({name: 'Home'})
       },
     },
 }
