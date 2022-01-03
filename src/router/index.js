@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import InitialSetup from '../views/InitialSetup.vue'
+import Visuals from '../views/Visualisations.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
       path: '/setup',
       name: 'Initial Setup',
       component: InitialSetup
+  },
+  {
+      path: '/visualisations',
+      name: "Visualisations",
+      component: Visuals
   },
   {
     path: '/about',
