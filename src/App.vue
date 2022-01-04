@@ -3,10 +3,11 @@
     <v-navigation-drawer
         v-model="drawer"
         app
+        class="blue darken-2"
     >
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6">
+          <v-list-item-title class="text-h6 white--text">
             Dashboard
           </v-list-item-title>
         </v-list-item-content>
@@ -22,22 +23,22 @@
               :to="'/'"
               link>
           <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
+            <v-icon color="white">mdi-home</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title class="white--text">Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item 
               :to="{ name: 'Initial Setup' }"
               link>
           <v-list-item-icon>
-            <v-icon>mdi-cogs</v-icon>
+            <v-icon color="white">mdi-cogs</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Initial Setup</v-list-item-title>
+            <v-list-item-title class="white--text">Initial Setup</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -45,30 +46,33 @@
         :to="{ name: 'Visualisations' }"
         link>
           <v-list-item-icon>
-            <v-icon>mdi-chart-areaspline</v-icon>
+            <v-icon color="white">mdi-chart-areaspline</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Visualizations</v-list-item-title>
+            <v-list-item-title class="white--text">Visualizations</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
         <v-list-item link>
           <v-list-item-icon>
-            <v-icon>mdi-google-analytics</v-icon>
+            <v-icon color="white">mdi-google-analytics</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Statistics</v-list-item-title>
+            <v-list-item-title class="white--text">Statistics</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar 
+    app
+    class="blue darken-2"
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Dashboard</v-toolbar-title>
+      <v-toolbar-title class="white--text">Dashboard</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
