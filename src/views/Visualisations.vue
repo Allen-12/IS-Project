@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid>
+    <v-container v-if="setup" fluid>
         <v-row>
             <v-col cols="12" class="mb-3">
                 <line-chart 
@@ -26,6 +26,24 @@
             </v-col>
         </v-row>
     </v-container>
+
+    <v-container v-else>
+    <v-card class="mx-auto" outlined>
+      <v-list-item three-line>
+        <v-list-item-content>
+          <div class="text-overline mb-4">WELCOME!</div>
+          <v-list-item-title class="text-h5 mb-1">
+            Initial Tank Setup Awaits...
+          </v-list-item-title>
+          <v-list-item-subtitle>Please click on "Initial Setup" button below to input your initial tank dimensions</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-card-actions>
+        <v-btn outlined rounded color="indigo" :to="{ name: 'Initial Setup' }" link>Go To Initial Setup</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-container>
 </template>
 <script>
 import axios from 'axios'
@@ -40,6 +58,7 @@ export default {
         LineChart
     },
     data: () => ({
+        setup: false,
         height: 0,
         surfaceArea: 0,
         volumeLabels: [],
@@ -51,6 +70,10 @@ export default {
     }),
     created: function(){
         db.collection('tank_data').get().then(tank_data => {
+            if (tank_data.length !== 0)
+            {
+                this.setup = true;
+            }
             this.height = tank_data[0].height
             this.surfaceArea = tank_data[0].surfaceArea
         })
