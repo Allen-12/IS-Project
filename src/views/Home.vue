@@ -27,14 +27,8 @@
             Time left for water to be depleted
           </v-card-title>
 
-          <v-card-subtitle
-            class="text-h6 font-weight-bold"
-            v-if="timeLeft === Infinity"
-            >&#8734;</v-card-subtitle
-          >
-          <v-card-subtitle class="text-h6 font-weight-bold" v-else
-            >{{ timeLeft }} minutes</v-card-subtitle
-          >
+          <v-card-subtitle class="text-h6 font-weight-bold" v-if="timeLeft === 'Infinity'">&#8734;</v-card-subtitle>
+          <v-card-subtitle class="text-h6 font-weight-bold" v-else>{{ timeLeft }} minutes</v-card-subtitle>
         </v-card>
       </v-col>
     </v-row>
@@ -45,14 +39,8 @@
             Estimated Date and Time of Depletion
           </v-card-title>
 
-          <v-card-subtitle
-            class="text-h6 font-weight-bold"
-            v-if="timeLeft === Infinity"
-            >&#8734;</v-card-subtitle
-          >
-          <v-card-subtitle class="text-h6 font-weight-bold" v-else>{{
-            time
-          }}</v-card-subtitle>
+          <v-card-subtitle class="text-h6 font-weight-bold" v-if="timeLeft === 'Infinity'">&#8734;</v-card-subtitle>
+          <v-card-subtitle class="text-h6 font-weight-bold" v-else>{{time}}</v-card-subtitle>
         </v-card>
       </v-col>
     </v-row>
