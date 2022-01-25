@@ -54,7 +54,9 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <!-- <v-list-item
+          :to="{ name: 'Statistics' }"
+          link>
           <v-list-item-icon>
             <v-icon color="white">mdi-google-analytics</v-icon>
           </v-list-item-icon>
@@ -62,7 +64,7 @@
           <v-list-item-content>
             <v-list-item-title class="white--text">Statistics</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
       </v-list>
     </v-navigation-drawer>
 

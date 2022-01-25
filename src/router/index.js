@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import InitialSetup from '../views/InitialSetup.vue'
 import Visuals from '../views/Visualisations.vue'
+import Statistics from '../views/Statistics.vue'
 
 Vue.use(VueRouter)
 

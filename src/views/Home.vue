@@ -69,7 +69,7 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn outlined rounded color="indigo" :to="{ name: 'Initial Setup' }" link>Go To Initial Setup</v-btn>
+        <v-btn outlined rounded class="blue darken-2 white--text" :to="{ name: 'Initial Setup' }" link>Go To Initial Setup</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -116,7 +116,7 @@ export default {
   },
   mounted: function () {
     this.getAllAPIData();
-    setInterval(this.getMostRecentAPIData, 60000);
+    setInterval(this.getMostRecentAPIData, 30000);
   },
   methods: {
     // Get all API Data at when page is loaded
